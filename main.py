@@ -7,9 +7,9 @@ from fastapi import FastAPI
 
 app = FastAPI(title="fastvpn")
 
-def ping(host):
+def ping(host,port,auth):
   ret = subprocess.run(
-    ['ping', '-c', '3', host],
+    ['curl', '-x', f'{auth}@{host}:{port}', 'https://ipinfo.io'],
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE
   )
@@ -27,7 +27,7 @@ def write_config(appendinfo):
 
 @app.get("/hostapi")
 async def say_hello(host: str,port:str,auth:str):
-  is_connect = ping(host);
+  is_connect = ping(host,port,auth);
   if is_connect:
     write_config(f"forward-socks5   /               {auth}@{host}:{port}  .")
     # 重启
