@@ -33,8 +33,8 @@ async def say_hello(host: str,port:str,auth:str):
     # 重启
     path = os.getcwd()
     kill_status = os.system(" ps -ef|grep privoxy| grep -v grep |awk '{print $2}' |xargs kill -9 ")
-    # start_privoxy= os.system(f"/usr/sbin/privoxy  {path}/privoxy_config")
-    start_privoxy= os.system(f"/usr/local/sbin/privoxy  {path}/privoxy_config")
+    start_privoxy= os.system(f"/usr/sbin/privoxy  {path}/privoxy_config")
+    # start_privoxy= os.system(f"/usr/local/sbin/privoxy  {path}/privoxy_config")
     return  ping(host);
   else:
     return is_connect;
