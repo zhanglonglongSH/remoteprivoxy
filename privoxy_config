@@ -2841,5 +2841,4 @@ socket-timeout 300
 #
 #hide-console
 #
-#
-forward-socks5   /               ovitobec:v15555650676@64.137.126.239:6847  .
+# .
